@@ -4,7 +4,25 @@
  * Created: 19-08-2017
  */
 
-CREATE OR REPLACE FUNCTION public.get_lst_dominio(
+/**
+ * Tabla
+ * 
+ */
+CREATE TABLE public.parametros (
+                codigo VARCHAR NOT NULL,
+                valor VARCHAR NOT NULL,
+                descripcion VARCHAR NOT NULL,
+                dominio VARCHAR NOT NULL,
+                CONSTRAINT parametros_pk PRIMARY KEY (codigo)
+);
+
+
+/**
+ * FUNCTION
+ * 
+ */
+
+CREATE OR REPLACE FUNCTION public.get_lst_parametros(
     IN p_dominio character varying,
     IN p_count integer DEFAULT 0,
     OUT p_cod_err integer,
@@ -36,7 +54,12 @@ BEGIN
 END $BODY$
   LANGUAGE plpgsql VOLATILE
   COST 100;
-ALTER FUNCTION public.get_lst_dominio(character varying, integer)
-  OWNER TO user_mf;
+ALTER FUNCTION public.get_lst_parametros(character varying, integer)
+  OWNER TO postgres;
 
-select public.get_lst_dominio('',1);
+
+/*
+Ejemplo de la ejecucion o test.
+*/
+
+select public.get_lst_parametros('',1);
