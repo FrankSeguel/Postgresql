@@ -22,7 +22,7 @@ CREATE TABLE public.parametros (
  * 
  */
 
-CREATE OR REPLACE FUNCTION public.get_lst_parametros(
+CREATE OR REPLACE FUNCTION public.get_lst_dominio(
     IN p_dominio character varying,
     IN p_count integer DEFAULT 0,
     OUT p_cod_err integer,
@@ -50,11 +50,11 @@ BEGIN
         p_cod_err := 0;
         p_desc_err := 'Success';
     END IF;
-refcursor.c
+
 END $BODY$
   LANGUAGE plpgsql VOLATILE
   COST 100;
-ALTER FUNCTION public.get_lst_parametros(character varying, integer)
+ALTER FUNCTION public.get_lst_dominio(character varying, integer)
   OWNER TO postgres;
 
 
@@ -62,4 +62,4 @@ ALTER FUNCTION public.get_lst_parametros(character varying, integer)
 Ejemplo de la ejecucion o test.
 */
 
-select public.get_lst_parametros('',1);
+select public.get_lst_dominio('',1);

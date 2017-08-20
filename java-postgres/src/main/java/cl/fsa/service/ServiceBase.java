@@ -52,7 +52,7 @@ public class ServiceBase implements Serializable {
         List<Dominio> result = new ArrayList<>();
         try {
             getConexion().setAutoCommit(false);//Con el Manejo de cursores es importante manejar el auto commit en falso.
-            String sql = "{ call public.get_lst_parametros(?, ?, ?, ?, ?) }";
+            String sql = "{ call public.get_lst_dominio(?, ?, ?, ?, ?) }";
             CallableStatement pre = getConexion().prepareCall(sql);
             pre.setString(1, dominio);
             pre.setInt(2, 0);
